@@ -27,8 +27,10 @@ export type Solution = {
 export type PortfolioProject = {
   id: number;
   title: string;
+  label: string;
   category: string;
   type: string;
+  filters: string[];
   description: string;
   clientTask: string;
   workDone: string;

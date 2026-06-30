@@ -8,9 +8,9 @@ export const interfaceMetrics: Metric[] = [
 ];
 
 export const recentDialogs = [
-  "UM AI ПРОДАЖНИК уточнил тариф и интеграцию с CRM",
-  "UM AI ПОДДЕРЖКА передала заявку на повторное касание",
-  "UM RAG АССИСТЕНТ нашёл документ по срокам запуска"
+  "UMO AI ПРОДАЖНИК уточнил тариф и интеграцию с CRM",
+  "UMO AI ПОДДЕРЖКА передала заявку на повторное касание",
+  "UMO RAG АССИСТЕНТ нашёл документ по срокам запуска"
 ];
 
 export const integrations = ["CRM", "Telegram", "Сайт", "База знаний", "API"];

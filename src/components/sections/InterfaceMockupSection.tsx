@@ -144,7 +144,7 @@ export function UMBotWorkspace() {
     <div className={`um-bot-workspace ${isFading ? "is-fading" : ""}`}>
       <div className="um-bot-workspace__header">
         <div>
-          <strong>UM Bot</strong>
+          <strong>UMO Bot</strong>
           <span>commercial real estate analysis</span>
         </div>
         <span className="interface-mockup__status">analysis live</span>
@@ -171,8 +171,8 @@ export function UMBotWorkspace() {
 
           {phase === "botTyping" ? (
             <div className="um-dialog-message um-dialog-message--bot">
-              <span>UM Bot</span>
-              <div className="um-typing" aria-label="UM Bot анализирует запрос">
+              <span>UMO Bot</span>
+              <div className="um-typing" aria-label="UMO Bot анализирует запрос">
                 <i />
                 <i />
                 <i />
@@ -182,7 +182,7 @@ export function UMBotWorkspace() {
 
           {phase === "botAnswering" || phase === "results" ? (
             <div className="um-dialog-message um-dialog-message--bot">
-              <span>UM Bot</span>
+              <span>UMO Bot</span>
               <p>{phase === "results" ? botAnswer : displayedAnswer}</p>
             </div>
           ) : null}
@@ -190,7 +190,7 @@ export function UMBotWorkspace() {
 
         <div className={`um-analysis-panel ${showResultsPanel ? "is-visible" : ""}`}>
           <div className="um-analysis-panel__top">
-            <span>UM Tech / data check</span>
+            <span>UMO Tech / data check</span>
             <strong>Анализ объектов</strong>
           </div>
           <div className="um-result-grid">

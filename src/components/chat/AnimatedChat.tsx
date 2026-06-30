@@ -25,9 +25,9 @@ export function AnimatedChat() {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="activity-log" aria-label="AI-модули UM Tech">
+    <div className="activity-log" aria-label="AI-модули UMO Tech">
       <div className="activity-log__topbar">
-        <span>UM Tech / AI modules</span>
+        <span>UMO Tech / AI modules</span>
         <span className="activity-log__status">
           <span className="status-dot" />
           working

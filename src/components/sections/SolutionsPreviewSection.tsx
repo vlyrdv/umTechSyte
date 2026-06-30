@@ -20,7 +20,7 @@ export function SolutionsPreviewSection() {
         <Reveal>
           <SectionTitle
             eyebrow="Что мы разрабатываем"
-            title="Ключевые направления UM Tech"
+            title="Ключевые направления UMO Tech"
             description="На главной оставляем главное: ассистенты, базы знаний, аналитика и интеграции. Остальные направления собраны на странице решений."
           />
         </Reveal>

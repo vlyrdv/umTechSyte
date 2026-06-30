@@ -8,7 +8,7 @@ export function HeroSection() {
       <div className="container">
         <div className="hero-panel">
           <Reveal className="hero-section__content">
-            <p className="hero-section__eyebrow">UM Tech / AI / ML SOLUTIONS</p>
+            <p className="hero-section__eyebrow">UMO Tech / AI / ML SOLUTIONS</p>
             <h1 className="hero-title">
               <span>AI, который</span>
               <em>не обещает магию,</em>
@@ -16,7 +16,7 @@ export function HeroSection() {
               <span className="hero-title__underlined">задачи бизнеса.</span>
             </h1>
             <p className="hero-section__lead">
-              UM Tech разрабатывает AI-ассистентов, RAG-системы, ML-модели и
+              UMO Tech разрабатывает AI-ассистентов, RAG-системы, ML-модели и
               аналитику данных под конкретные задачи бизнеса — от автоматизации рутины
               до принятия решений на основе данных.
             </p>

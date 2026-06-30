@@ -11,26 +11,30 @@ export function PortfolioPage() {
       return portfolioProjects;
     }
 
-    return portfolioProjects.filter((project) => project.type === activeFilter);
+    return portfolioProjects.filter((project) => project.filters.includes(activeFilter));
   }, [activeFilter]);
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero--portfolio">
         <div className="container page-hero__inner">
           <Reveal>
-            <p className="page-hero__eyebrow">Портфолио</p>
-            <h1>Портфолио AI/ML-проектов</h1>
+            <p className="page-hero__eyebrow">UMO TECH · PORTFOLIO</p>
+            <h1 className="portfolio-hero__title">
+              <span>Проекты, в которых AI и ML </span>
+              <em>решают реальные задачи</em>
+            </h1>
             <p>
-              Здесь будут собраны проекты по внедрению искусственного интеллекта, машинного
-              обучения, компьютерного зрения, NLP, RAG-систем, аналитики данных и кастомной
-              разработки для бизнеса.
+              В портфолио UMO Tech — проекты в Computer Vision, NLP, RAG, аналитике
+              данных, генеративных моделях и ML-системах для бизнеса. Мы создаём решения
+              не ради “AI”, а под конкретную задачу: распознать, предсказать, найти,
+              классифицировать, сгенерировать или автоматизировать.
             </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section portfolio-section">
         <div className="container">
           <Reveal className="filter-row">
             {portfolioFilters.map((filter) => (

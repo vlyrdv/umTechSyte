@@ -1,5 +1,5 @@
+import { useState } from "react";
 import type { PortfolioProject } from "../../data/types";
-import { Button } from "../ui/Button";
 
 type PortfolioCardProps = {
   project: PortfolioProject;
@@ -7,16 +7,23 @@ type PortfolioCardProps = {
 };
 
 export function PortfolioCard({ project, compact = false }: PortfolioCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const visibleTechnologies = isExpanded ? project.technologies : project.technologies.slice(0, 4);
+
   return (
-    <article className={`portfolio-card ${compact ? "portfolio-card--compact" : ""}`}>
+    <article
+      className={`portfolio-card ${compact ? "portfolio-card--compact" : ""} ${
+        isExpanded ? "is-expanded" : ""
+      }`}
+    >
       <div className="portfolio-card__header">
+        <span>{project.label}</span>
         <span>{project.category}</span>
-        <span>{project.type}</span>
       </div>
       <h3>{project.title}</h3>
       <p>{project.description}</p>
 
-      {!compact ? (
+      {!compact && isExpanded ? (
         <div className="portfolio-card__body">
           <div>
             <strong>Задача</strong>
@@ -26,23 +33,29 @@ export function PortfolioCard({ project, compact = false }: PortfolioCardProps) 
             <strong>Что сделано</strong>
             <span>{project.workDone}</span>
           </div>
+          <div>
+            <strong>Результат</strong>
+            <span>{project.result}</span>
+          </div>
         </div>
       ) : null}
 
-      <div className="portfolio-card__result">
-        <strong>Результат</strong>
-        <span>{project.result}</span>
-      </div>
-
       <div className="tag-list">
-        {project.technologies.map((technology) => (
+        {visibleTechnologies.map((technology) => (
           <span key={technology}>{technology}</span>
         ))}
       </div>
 
-      <Button href="/contacts" variant="ghost" size="sm">
-        Подробнее
-      </Button>
+      {!compact ? (
+        <button
+          className="button button--ghost button--sm"
+          type="button"
+          aria-expanded={isExpanded}
+          onClick={() => setIsExpanded((value) => !value)}
+        >
+          <span>{isExpanded ? "Свернуть" : "Подробнее"}</span>
+        </button>
+      ) : null}
     </article>
   );
 }

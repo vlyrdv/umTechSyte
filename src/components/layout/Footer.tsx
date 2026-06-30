@@ -7,12 +7,12 @@ export function Footer() {
       <div className="container site-footer__grid">
         <div className="site-footer__brand">
           <AppLink to="/" className="brand" aria-label="На главную">
-            <span className="brand__mark">UM</span>
-            <span className="brand__text">UM Tech</span>
+            <span className="brand__mark">UMO</span>
+            <span className="brand__text">UMO Tech</span>
             <span className="brand__tag">TECH PARTNER</span>
           </AppLink>
           <p>
-            UM Tech проектирует и внедряет AI/ML-решения, которые встраиваются в
+            UMO Tech проектирует и внедряет AI/ML-решения, которые встраиваются в
             процессы, продукты и команды бизнеса.
           </p>
         </div>

@@ -11,7 +11,7 @@ export function SolutionCard({ solution, detailed = false }: SolutionCardProps) 
     <article className={`solution-card ${detailed ? "solution-card--detailed" : ""}`}>
       <div className="solution-card__top">
         <span className="solution-card__number">{solution.icon}</span>
-        <span className="solution-card__category">UM Tech / {solution.icon}</span>
+        <span className="solution-card__category">UMO Tech / {solution.icon}</span>
       </div>
       <h3>{solution.title}</h3>
       <p>{solution.shortDescription}</p>

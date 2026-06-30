@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useIsMobileViewport } from "../../hooks/useIsMobileViewport";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 
 const employeeQuestion =
@@ -18,6 +19,8 @@ type BotPhase = "employeeTyping" | "sent" | "botTyping" | "botAnswering" | "resu
 
 export function UMBotWorkspace() {
   const prefersReducedMotion = usePrefersReducedMotion();
+  const isMobileViewport = useIsMobileViewport();
+  const shouldReduceMotion = prefersReducedMotion || isMobileViewport;
   const [phase, setPhase] = useState<BotPhase>("employeeTyping");
   const [displayedQuestion, setDisplayedQuestion] = useState("");
   const [displayedAnswer, setDisplayedAnswer] = useState("");
@@ -44,7 +47,7 @@ export function UMBotWorkspace() {
   );
 
   useEffect(() => {
-    if (prefersReducedMotion) {
+    if (shouldReduceMotion) {
       setPhase("results");
       setDisplayedQuestion(employeeQuestion);
       setDisplayedAnswer(botAnswer);
@@ -135,10 +138,10 @@ export function UMBotWorkspace() {
       isCancelled = true;
       timers.forEach((timer) => window.clearTimeout(timer));
     };
-  }, [answerPauses, cycle, prefersReducedMotion, questionPauses]);
+  }, [answerPauses, cycle, questionPauses, shouldReduceMotion]);
 
   const showSentQuestion = phase !== "employeeTyping";
-  const showResultsPanel = phase === "results" || prefersReducedMotion;
+  const showResultsPanel = phase === "results" || shouldReduceMotion;
 
   return (
     <div className={`um-bot-workspace ${isFading ? "is-fading" : ""}`}>

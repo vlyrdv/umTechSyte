@@ -4194,3 +4194,74 @@ body {
     font-size: 30px;
   }
 }
+
+/* Mobile animation performance guard */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .status-dot,
+  .activity-row__dot,
+  .um-typing i,
+  .um-composer i,
+  .um-analysis-panel__footer span {
+    animation: none;
+  }
+
+  .hero-section__visual,
+  .activity-row,
+  .activity-row.is-active,
+  .benefit-bot .um-analysis-panel,
+  .benefit-bot .um-analysis-panel.is-visible,
+  .um-analysis-panel,
+  .um-result-grid article,
+  .um-analysis-panel.is-visible .um-result-grid article.is-visible,
+  .feature-card:hover,
+  .solution-card:hover,
+  .portfolio-card:hover,
+  .industry-card:hover,
+  .process-step:hover,
+  .portfolio-section .portfolio-card:hover,
+  .button:hover {
+    transform: none;
+  }
+
+  .activity-row,
+  .activity-row.is-active,
+  .feature-card:hover,
+  .solution-card:hover,
+  .portfolio-card:hover,
+  .industry-card:hover,
+  .process-step:hover,
+  .portfolio-section .portfolio-card:hover {
+    box-shadow: none;
+  }
+
+  .activity-row,
+  .um-analysis-panel,
+  .um-result-grid article,
+  .benefit-bot .um-analysis-panel,
+  .portfolio-section .portfolio-card,
+  .feature-card,
+  .solution-card,
+  .industry-card,
+  .process-step {
+    transition:
+      border-color 160ms ease,
+      background-color 160ms ease,
+      opacity 160ms ease;
+  }
+
+  .um-result-grid article,
+  .um-analysis-panel.is-visible .um-result-grid article.is-visible {
+    opacity: 1;
+  }
+}

@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 import { activityLogItems } from "../../data/activityLog";
+import { useIsMobileViewport } from "../../hooks/useIsMobileViewport";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { useTypewriter } from "../../hooks/useTypewriter";
 
 export function AnimatedChat() {
   const prefersReducedMotion = usePrefersReducedMotion();
+  const isMobileViewport = useIsMobileViewport();
+  const shouldReduceMotion = prefersReducedMotion || isMobileViewport;
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = activityLogItems[activeIndex];
   const typedAction = useTypewriter(activeItem.action, {
+    enabled: !shouldReduceMotion,
     speed: 28,
     startDelay: 180
   });
 
   useEffect(() => {
-    if (prefersReducedMotion) {
+    if (shouldReduceMotion) {
       return;
     }
 
@@ -22,7 +26,7 @@ export function AnimatedChat() {
     }, 3600);
 
     return () => window.clearInterval(timer);
-  }, [prefersReducedMotion]);
+  }, [shouldReduceMotion]);
 
   return (
     <div className="activity-log" aria-label="AI-модули UMO Tech">
@@ -36,8 +40,8 @@ export function AnimatedChat() {
 
       <div className="activity-card-stack">
         {activityLogItems.map((item, index) => {
-          const isActive = index === activeIndex || prefersReducedMotion;
-          const actionText = isActive && !prefersReducedMotion ? typedAction.displayedText : item.action;
+          const isActive = index === activeIndex || shouldReduceMotion;
+          const actionText = isActive && !shouldReduceMotion ? typedAction.displayedText : item.action;
 
           return (
             <article

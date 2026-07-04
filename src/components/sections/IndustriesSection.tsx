@@ -11,7 +11,7 @@ export function IndustriesSection() {
           <SectionTitle
             eyebrow="Сферы"
             title="Адаптируем AI/ML под вашу нишу"
-            description="Учитываем процессы, документы, данные, CRM, каналы коммуникации и требования конкретного рынка."
+            description="Учитываем ваши процессы, документы, данные, CRM, каналы общения с клиентами и правила рынка."
           />
         </Reveal>
         <div className="industry-grid">

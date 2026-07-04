@@ -7,8 +7,8 @@ import { SectionTitle } from "../ui/SectionTitle";
 const homeSolutionTitles = new Set([
   "AI-ассистенты для сотрудников",
   "RAG-системы и базы знаний",
-  "Аналитика, дашборды и работа с данными",
-  "Интеграции с CRM и мессенджерами"
+  "Аналитика, отчёты и работа с данными",
+  "Подключение к CRM и мессенджерам"
 ]);
 
 export function SolutionsPreviewSection() {
@@ -21,7 +21,7 @@ export function SolutionsPreviewSection() {
           <SectionTitle
             eyebrow="Что мы разрабатываем"
             title="Ключевые направления UMO Tech"
-            description="На главной оставляем главное: ассистенты, базы знаний, аналитика и интеграции. Остальные направления собраны на странице решений."
+            description="На главной оставляем главное: ассистенты, базы знаний, аналитику и подключение к рабочим системам. Остальные направления собраны на странице решений."
           />
         </Reveal>
         <div className="solution-grid">

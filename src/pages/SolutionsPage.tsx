@@ -11,11 +11,10 @@ export function SolutionsPage() {
         <div className="container page-hero__inner">
           <Reveal>
             <p className="page-hero__eyebrow">Решения</p>
-            <h1>AI/ML-инструменты под реальные бизнес-процессы</h1>
+            <h1>AI/ML-инструменты под реальные задачи бизнеса</h1>
             <p>
-              Показываем, какие технологические решения можно разработать: от
-              AI-ассистентов и RAG до ML-моделей, Computer Vision, аналитики и кастомных
-              продуктов.
+              Показываем, какие решения можно сделать: от AI-ассистентов и RAG
+              до ML-моделей, Computer Vision, аналитики и продуктов под заказ.
             </p>
             <Button href="/contacts">Обсудить задачу</Button>
           </Reveal>
@@ -27,7 +26,7 @@ export function SolutionsPage() {
           <Reveal>
             <SectionTitle
               title="Что можно внедрить"
-              description="Каждое решение проектируется под вашу логику, данные, команду и доступные интеграции."
+              description="Каждое решение создаётся под вашу задачу, данные, команду и системы, к которым нужно подключиться."
             />
           </Reveal>
           <div className="solution-grid solution-grid--detailed">

@@ -6,11 +6,11 @@ export function FinalCTASection() {
     <section className="section final-cta-section">
       <div className="container">
         <Reveal className="final-cta">
-          <p>Первичная консультация — бесплатно</p>
+          <p>Первый разбор задачи — бесплатно</p>
           <h2>Хотите понять, где AI и данные могут усилить ваш бизнес?</h2>
           <span>
             Оставьте заявку в UMO Tech — мы разберём вашу задачу, процессы или идею продукта и
-            предложим варианты реализации.
+            предложим варианты решения.
           </span>
           <Button href="/contacts" size="lg">
             Обсудить проект

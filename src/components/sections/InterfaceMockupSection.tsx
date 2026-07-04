@@ -3,14 +3,14 @@ import { useIsMobileViewport } from "../../hooks/useIsMobileViewport";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 
 const employeeQuestion =
-  "Подбери коммерческие объекты для аренды под открытие бутика в локациях с высоким пешеходным трафиком.";
+  "Подбери помещения для аренды под открытие бутика в местах, где проходит много людей.";
 
 const botAnswer =
-  "Сейчас проверю доступные объекты, сравню локации по трафику и выделю варианты с наибольшим потенциалом для бутика.";
+  "Сейчас проверю доступные объекты, сравню места по потоку людей и выделю самые подходящие варианты для бутика.";
 
 const analysisResults = [
   { value: "14", label: "объектов найдено" },
-  { value: "5", label: "локаций с высоким трафиком" },
+  { value: "5", label: "мест с большим потоком людей" },
   { value: "3", label: "объекта подходят под формат бутика" },
   { value: "→", label: "Готовлю рекомендацию" }
 ];
@@ -41,7 +41,7 @@ export function UMBotWorkspace() {
     () =>
       new Map([
         [botAnswer.indexOf("объекты") + "объекты".length, 360],
-        [botAnswer.indexOf("трафику") + "трафику".length, 420]
+        [botAnswer.indexOf("людей") + "людей".length, 420]
       ]),
     []
   );
@@ -209,7 +209,7 @@ export function UMBotWorkspace() {
           </div>
           <div className="um-analysis-panel__footer">
             <span />
-            <p>Система сопоставляет площадь, трафик, окружение и формат помещения.</p>
+            <p>Система сопоставляет площадь, поток людей, окружение и формат помещения.</p>
           </div>
         </div>
       </div>

@@ -3805,24 +3805,16 @@ body {
 
   .process-timeline .reveal:not(:last-child)::after,
   .process-timeline .reveal:nth-child(2n)::after {
-    top: 66px;
-    bottom: -18px;
-    left: 28px;
-    display: block;
-    width: 1px;
-    height: auto;
-    background: rgba(17, 17, 15, 0.14);
+    display: none;
   }
 
   .process-step {
     min-height: 0;
-    padding-left: 82px;
+    padding-left: 28px;
   }
 
   .process-step__number {
-    position: absolute;
-    top: 24px;
-    left: 24px;
+    position: static;
   }
 }
 

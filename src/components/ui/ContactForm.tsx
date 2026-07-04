@@ -20,7 +20,7 @@ export function ContactForm() {
     event.preventDefault();
     setIsSent(true);
     setForm(initialForm);
-    // Здесь позже можно подключить backend, Telegram-бота или email-сервис.
+    // Здесь позже можно подключить backend, Telegram-бота или email.
   };
 
   return (
@@ -64,8 +64,8 @@ export function ContactForm() {
       <Button type="submit">Отправить заявку</Button>
       {isSent ? (
         <p className="contact-form__success">
-          Заявка сохранена на фронтенде. Интеграцию отправки можно подключить следующим
-          шагом.
+          Заявка сохранена на сайте. Отправку в Telegram или email можно подключить
+          следующим шагом.
         </p>
       ) : null}
     </form>

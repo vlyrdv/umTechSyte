@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { sendContactRequest } from "../../services/contactRequest";
 import { Button } from "./Button";
 
 const initialForm = {
@@ -10,17 +11,23 @@ const initialForm = {
 
 export function ContactForm() {
   const [form, setForm] = useState(initialForm);
-  const [isSent, setIsSent] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const updateField = (field: keyof typeof form, value: string) => {
     setForm((current) => ({ ...current, [field]: value }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSent(true);
-    setForm(initialForm);
-    // Здесь позже можно подключить backend, Telegram-бота или email.
+    setSubmitStatus("sending");
+
+    try {
+      await sendContactRequest(form);
+      setSubmitStatus("success");
+      setForm(initialForm);
+    } catch {
+      setSubmitStatus("error");
+    }
   };
 
   return (
@@ -61,11 +68,17 @@ export function ContactForm() {
           required
         />
       </label>
-      <Button type="submit">Отправить заявку</Button>
-      {isSent ? (
+      <Button type="submit" disabled={submitStatus === "sending"}>
+        {submitStatus === "sending" ? "Отправляем..." : "Отправить заявку"}
+      </Button>
+      {submitStatus === "success" ? (
         <p className="contact-form__success">
-          Заявка сохранена на сайте. Отправку в Telegram или email можно подключить
-          следующим шагом.
+          Заявка отправлена. Мы получили уведомление в Telegram-группу и свяжемся с вами.
+        </p>
+      ) : null}
+      {submitStatus === "error" ? (
+        <p className="contact-form__error">
+          Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.
         </p>
       ) : null}
     </form>

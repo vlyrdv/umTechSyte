@@ -1270,6 +1270,21 @@ textarea:focus-visible {
   padding: 12px 14px;
 }
 
+.contact-form__error {
+  border: 1px solid rgba(196, 72, 72, 0.24);
+  border-radius: var(--radius);
+  background: rgba(196, 72, 72, 0.08);
+  color: #b24141;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px 14px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.64;
+}
+
 .contact-aside {
   display: grid;
   gap: 18px;
@@ -2410,6 +2425,12 @@ textarea:focus-visible {
   border-color: rgba(47, 124, 99, 0.22);
   background: rgba(47, 124, 99, 0.08);
   color: var(--teal);
+}
+
+.contact-form__error {
+  border-color: rgba(142, 56, 45, 0.18);
+  background: rgba(142, 56, 45, 0.08);
+  color: #8e382d;
 }
 
 .anchor-offset {

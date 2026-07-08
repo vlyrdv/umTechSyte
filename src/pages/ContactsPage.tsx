@@ -33,8 +33,8 @@ export function ContactsPage() {
           <Reveal className="contact-aside" delay={120}>
             <div>
               <h2>Контакты</h2>
-              <p>Telegram: @ai_partner</p>
-              <p>Email: hello@ai-partner.ru</p>
+              <p>Telegram: @umotech</p>
+              <p>Email: umo-tech@mail.ru</p>
             </div>
 
             <div>

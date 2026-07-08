@@ -13,9 +13,12 @@ export function Header() {
     <header className="site-header">
       <div className="container site-header__inner">
         <AppLink to="/" className="brand" aria-label="На главную">
-          <span className="brand__mark">UMO</span>
-          <span className="brand__text">UMO Tech</span>
-          <span className="brand__tag">AI / ML SOLUTIONS</span>
+          <img
+            className="brand__logo brand__logo--header"
+            src="/assets/logo/header-logo.png"
+            alt="UMO Tech"
+          />
+          <span className="brand__tag">AI SOLUTIONS</span>
         </AppLink>
 
         <nav className="site-nav" aria-label="Основная навигация">

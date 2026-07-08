@@ -1,4 +1,6 @@
 const MAX_FIELD_LENGTH = 1400;
+const PHONE_CONTACT_PATTERN = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+const TELEGRAM_CONTACT_PATTERN = /^@[A-Za-z0-9_]{5,32}$/;
 
 function sanitizeField(value, maxLength = MAX_FIELD_LENGTH) {
   return String(value ?? "").trim().slice(0, maxLength);
@@ -38,6 +40,10 @@ function buildTelegramMessage(payload) {
   ].join("\n");
 }
 
+function isValidContact(contact) {
+  return PHONE_CONTACT_PATTERN.test(contact) || TELEGRAM_CONTACT_PATTERN.test(contact);
+}
+
 export default async function handler(request, response) {
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
@@ -67,6 +73,13 @@ export default async function handler(request, response) {
     return response.status(400).json({
       ok: false,
       message: "Name, contact and task are required"
+    });
+  }
+
+  if (!isValidContact(payload.contact)) {
+    return response.status(400).json({
+      ok: false,
+      message: "Contact must be a Telegram username or a Russian phone number"
     });
   }
 

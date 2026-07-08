@@ -8,7 +8,7 @@ export function HeroSection() {
       <div className="container">
         <div className="hero-panel">
           <Reveal className="hero-section__content">
-            <p className="hero-section__eyebrow">UMO Tech / AI / ML SOLUTIONS</p>
+            <p className="hero-section__eyebrow">UMO Tech | AI SOLUTIONS</p>
             <h1 className="hero-title">
               <span>AI, который</span>
               <em>не обещает магию,</em>

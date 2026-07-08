@@ -7,9 +7,11 @@ export function Footer() {
       <div className="container site-footer__grid">
         <div className="site-footer__brand">
           <AppLink to="/" className="brand" aria-label="На главную">
-            <span className="brand__mark">UMO</span>
-            <span className="brand__text">UMO Tech</span>
-            <span className="brand__tag">TECH PARTNER</span>
+            <img
+              className="brand__logo brand__logo--footer"
+              src="/assets/logo/footer-logo.png"
+              alt="UMO Tech"
+            />
           </AppLink>
           <p>
             UMO Tech создаёт и запускает AI/ML-решения, которые помогают командам
@@ -26,8 +28,8 @@ export function Footer() {
         </nav>
 
         <div className="site-footer__contacts">
-          <span>Telegram: @ai_partner</span>
-          <span>Email: hello@ai-partner.ru</span>
+          <span>Telegram: @umotech</span>
+          <span>Email: umo-tech@mail.ru</span>
           <span>Россия</span>
         </div>
       </div>

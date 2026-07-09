@@ -40,7 +40,7 @@ export function ContactsPage() {
                 </a>
               </p>
               <p>
-                Email: <a href="mailto:umo-tech@proton.me">umo-tech@proton.me</a>
+                Email: <a href="mailto:ai@umo-tech.ru">ai@umo-tech.ru</a>
               </p>
             </div>
 

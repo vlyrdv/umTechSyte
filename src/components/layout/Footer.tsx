@@ -35,7 +35,7 @@ export function Footer() {
             </a>
           </span>
           <span>
-            Email: <a href="mailto:umo-tech@proton.me">umo-tech@proton.me</a>
+            Email: <a href="mailto:ai@umo-tech.ru">ai@umo-tech.ru</a>
           </span>
           <span>Россия</span>
         </div>

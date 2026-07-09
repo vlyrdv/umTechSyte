@@ -34,7 +34,7 @@ export function ContactsPage() {
             <div>
               <h2>Контакты</h2>
               <p>Telegram: @umotech</p>
-              <p>Email: umo-tech@mail.ru</p>
+              <p>Email: umo-tech@proton.me</p>
             </div>
 
             <div>

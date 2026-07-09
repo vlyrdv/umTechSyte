@@ -29,7 +29,7 @@ export function Footer() {
 
         <div className="site-footer__contacts">
           <span>Telegram: @umotech</span>
-          <span>Email: umo-tech@mail.ru</span>
+          <span>Email: umo-tech@proton.me</span>
           <span>Россия</span>
         </div>
       </div>

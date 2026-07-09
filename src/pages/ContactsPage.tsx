@@ -33,8 +33,15 @@ export function ContactsPage() {
           <Reveal className="contact-aside" delay={120}>
             <div>
               <h2>Контакты</h2>
-              <p>Telegram: @umotech</p>
-              <p>Email: umo-tech@proton.me</p>
+              <p>
+                Telegram:{" "}
+                <a href="https://t.me/umotech" target="_blank" rel="noreferrer">
+                  @umotech
+                </a>
+              </p>
+              <p>
+                Email: <a href="mailto:umo-tech@proton.me">umo-tech@proton.me</a>
+              </p>
             </div>
 
             <div>

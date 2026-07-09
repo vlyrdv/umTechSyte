@@ -1319,6 +1319,21 @@ textarea:focus-visible {
   line-height: 1.58;
 }
 
+.contact-aside a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 229, 182, 0.36);
+  text-underline-offset: 4px;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.contact-aside a:hover {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+
 .contact-aside ul {
   display: grid;
   gap: 4px;
@@ -3703,7 +3718,8 @@ body {
 .site-footer__nav,
 .site-footer__nav a,
 .site-footer__contacts,
-.site-footer__contacts span {
+.site-footer__contacts span,
+.site-footer__contacts a {
   color: #5c5a55;
   font-family: "Inter", "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -3724,6 +3740,20 @@ body {
 
 .site-footer__nav a:hover {
   color: #11110f;
+}
+
+.site-footer__contacts a {
+  text-decoration: underline;
+  text-decoration-color: rgba(92, 90, 85, 0.32);
+  text-underline-offset: 4px;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.site-footer__contacts a:hover {
+  color: #11110f;
+  text-decoration-color: currentColor;
 }
 
 .site-footer .brand__tag {
@@ -3958,11 +3988,13 @@ body {
 .site-footer__nav,
 .site-footer__nav a,
 .site-footer__contacts,
-.site-footer__contacts span {
+.site-footer__contacts span,
+.site-footer__contacts a {
   color: rgba(251, 250, 246, 0.68);
 }
 
-.site-footer__nav a:hover {
+.site-footer__nav a:hover,
+.site-footer__contacts a:hover {
   color: #fbfaf6;
 }
 
@@ -4200,6 +4232,120 @@ body {
   color: #fbfaf6;
 }
 
+.portfolio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  align-items: end;
+  background: rgba(17, 17, 15, 0.38);
+  padding: 18px 14px;
+}
+
+.portfolio-modal__dialog {
+  position: relative;
+  max-height: min(82vh, 720px);
+  overflow: auto;
+  border: 1px solid rgba(17, 17, 15, 0.14);
+  border-radius: 24px 24px 18px 18px;
+  background: #fffdf8;
+  color: #11110f;
+  box-shadow: 0 26px 80px rgba(17, 17, 15, 0.24);
+  padding: 24px;
+}
+
+.portfolio-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(17, 17, 15, 0.14);
+  border-radius: 999px;
+  background: transparent;
+  color: #11110f;
+  cursor: pointer;
+  font-family: "Inter", "Manrope", system-ui, sans-serif;
+  font-size: 24px;
+  line-height: 1;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.portfolio-modal__close:hover {
+  border-color: #11110f;
+  background: rgba(17, 17, 15, 0.06);
+}
+
+.portfolio-modal .portfolio-card__header {
+  max-width: calc(100% - 48px);
+  gap: 8px;
+}
+
+.portfolio-modal .portfolio-card__header span,
+.portfolio-modal .tag-list span {
+  border-color: rgba(17, 17, 15, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  color: #6f6a60;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 8px 10px;
+  text-transform: uppercase;
+}
+
+.portfolio-modal h3 {
+  margin-top: 28px;
+  color: #11110f;
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 0.98;
+}
+
+.portfolio-modal p {
+  margin-top: 16px;
+  color: #5c5a55;
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.portfolio-modal .portfolio-card__body {
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.portfolio-modal .portfolio-card__body div {
+  border-top: 1px solid rgba(17, 17, 15, 0.1);
+  padding-top: 14px;
+}
+
+.portfolio-modal strong {
+  color: #11110f;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.portfolio-modal .portfolio-card__body span {
+  display: block;
+  margin-top: 8px;
+  color: #4d4942;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.portfolio-modal .tag-list {
+  margin-top: 22px;
+}
+
 @media (max-width: 1180px) {
   .portfolio-section .portfolio-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4226,15 +4372,32 @@ body {
 
   .portfolio-section .portfolio-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .portfolio-section .portfolio-grid > .reveal {
+    height: auto;
   }
 
   .portfolio-section .portfolio-card {
-    min-height: 0;
+    height: auto;
+    min-height: 330px;
     padding: 24px;
   }
 
   .portfolio-section .portfolio-card h3 {
     font-size: 30px;
+  }
+
+  .portfolio-section .portfolio-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .portfolio-section .portfolio-card .tag-list {
+    padding-top: 20px;
   }
 }
 

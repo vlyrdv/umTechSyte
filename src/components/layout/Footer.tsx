@@ -28,8 +28,15 @@ export function Footer() {
         </nav>
 
         <div className="site-footer__contacts">
-          <span>Telegram: @umotech</span>
-          <span>Email: umo-tech@proton.me</span>
+          <span>
+            Telegram:{" "}
+            <a href="https://t.me/umotech" target="_blank" rel="noreferrer">
+              @umotech
+            </a>
+          </span>
+          <span>
+            Email: <a href="mailto:umo-tech@proton.me">umo-tech@proton.me</a>
+          </span>
           <span>Россия</span>
         </div>
       </div>

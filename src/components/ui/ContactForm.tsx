@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type KeyboardEvent } from "react";
 import { sendContactRequest } from "../../services/contactRequest";
 import { Button } from "./Button";
 
@@ -16,7 +16,7 @@ function formatRussianPhone(nationalDigits: string) {
   const digits = nationalDigits.slice(0, 10);
 
   if (!digits) {
-    return "+7";
+    return "";
   }
 
   let result = `+7 (${digits.slice(0, 3)}`;
@@ -40,6 +40,30 @@ function formatRussianPhone(nationalDigits: string) {
   return result;
 }
 
+function normalizeTelegramContact(value: string) {
+  const atIndex = value.indexOf("@");
+  const username = value
+    .slice(atIndex + 1)
+    .replace(/[^A-Za-z0-9_]/g, "")
+    .slice(0, 32);
+
+  return `@${username}`;
+}
+
+function getNationalPhoneDigits(value: string) {
+  const digits = value.replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  if (digits.startsWith("8") || digits.startsWith("7")) {
+    return digits.slice(1);
+  }
+
+  return digits;
+}
+
 function normalizeContactInput(value: string) {
   const trimmedStart = value.trimStart();
 
@@ -47,24 +71,21 @@ function normalizeContactInput(value: string) {
     return "";
   }
 
-  if (trimmedStart.startsWith("@")) {
-    const username = trimmedStart.replace(/^@+/, "").replace(/[^A-Za-z0-9_]/g, "").slice(0, 32);
-    return `@${username}`;
+  if (trimmedStart.includes("@")) {
+    return normalizeTelegramContact(trimmedStart);
+  }
+
+  if (trimmedStart === "+") {
+    return "+";
   }
 
   const digits = value.replace(/\D/g, "");
 
-  if (!digits) {
-    return value.trim().startsWith("+") ? "+7" : "";
+  if (digits === "7" || digits === "8") {
+    return "+7";
   }
 
-  const nationalDigits = digits.startsWith("8")
-    ? digits.slice(1)
-    : digits.startsWith("7")
-      ? digits.slice(1)
-      : digits;
-
-  return formatRussianPhone(nationalDigits);
+  return formatRussianPhone(getNationalPhoneDigits(value));
 }
 
 function isValidContact(value: string) {
@@ -87,6 +108,46 @@ export function ContactForm() {
 
   const updateContactField = (value: string) => {
     updateField("contact", normalizeContactInput(value));
+  };
+
+  const handleContactKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if ((event.key !== "Backspace" && event.key !== "Delete") || form.contact.includes("@")) {
+      return;
+    }
+
+    const input = event.currentTarget;
+    const cursorStart = input.selectionStart;
+    const cursorEnd = input.selectionEnd;
+
+    if (cursorStart === null || cursorEnd === null || cursorStart !== cursorEnd) {
+      return;
+    }
+
+    const previousChar = input.value[cursorStart - 1] ?? "";
+    const nextChar = input.value[cursorStart] ?? "";
+    const shouldRemovePreviousDigit =
+      event.key === "Backspace" && cursorStart > 0 && /\D/.test(previousChar);
+    const shouldRemoveNextDigit =
+      event.key === "Delete" && cursorStart < input.value.length && /\D/.test(nextChar);
+
+    if (!shouldRemovePreviousDigit && !shouldRemoveNextDigit) {
+      return;
+    }
+
+    const allDigits = input.value.replace(/\D/g, "");
+    const digitsBeforeCursor = input.value.slice(0, cursorStart).replace(/\D/g, "").length;
+    const digitIndexToRemove =
+      event.key === "Backspace" ? digitsBeforeCursor - 1 : digitsBeforeCursor;
+
+    if (digitIndexToRemove <= 0 || digitIndexToRemove >= allDigits.length) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const nextDigits =
+      allDigits.slice(0, digitIndexToRemove) + allDigits.slice(digitIndexToRemove + 1);
+    updateField("contact", normalizeContactInput(nextDigits));
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -118,7 +179,7 @@ export function ContactForm() {
         <input
           value={form.name}
           onChange={(event) => updateField("name", event.target.value)}
-          placeholder="Как к вам обращаться"
+          placeholder="Как к Вам обращаться"
           required
         />
       </label>
@@ -134,9 +195,12 @@ export function ContactForm() {
         <span>Телефон или Telegram</span>
         <input
           value={form.contact}
+          onKeyDown={handleContactKeyDown}
           onChange={(event) => updateContactField(event.target.value)}
           placeholder="+7 (999) 999-99-99 или @username"
           maxLength={33}
+          autoCapitalize="off"
+          autoCorrect="off"
           spellCheck={false}
           aria-invalid={submitStatus === "error" && !isValidContact(form.contact)}
           required
